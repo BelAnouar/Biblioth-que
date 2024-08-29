@@ -11,6 +11,9 @@ public class Magasine extends Documents {
     public Magasine(String id, String titre, String author, Date datePublication, int nombreDePages) {
         super(id, titre, author, datePublication, nombreDePages);
     }
+    public  Magasine(){
+        super();
+    }
 
     @Override
     public boolean emprunt() {

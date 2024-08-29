@@ -1,5 +1,6 @@
 package org.bibliotheque.Entities.Abstractions;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,9 @@ public abstract class Documents {
     private String author;
     private Date datePublication;
     private int  nombreDePages ;
+    public  Documents(){
+
+    }
 
     public Documents(String id , String titre ,String author ,Date datePublication ,int nombreDePages ) {
         this.id = id;
@@ -60,4 +64,6 @@ public abstract class Documents {
     public abstract boolean emprunt();
     public abstract boolean retourner();
     public abstract List<? extends  Documents> afficherDetails();
+
+
 }
