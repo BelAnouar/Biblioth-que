@@ -2,7 +2,7 @@ package org.bibliotheque.main;
 
 import java.util.Scanner;
 import org.example.custom.ConsoleColors;
-public class BibliothequeMain {
+public class ConsoleUI {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
