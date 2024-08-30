@@ -10,7 +10,7 @@ public interface  Bibliotheque<T extends Documents> {
    boolean Ajouter(T Documents);
    boolean Emprunter();
    boolean Retourner();
-   T getDocuments();
+   T getDocuments(String  id);
    List<T> Afficher();
 
 }
