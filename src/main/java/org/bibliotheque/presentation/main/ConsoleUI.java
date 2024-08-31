@@ -1,16 +1,15 @@
-package org.bibliotheque.main;
+package org.bibliotheque.presentation.main;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.UUID;
 
-import org.bibliotheque.Entities.Livre;
-import org.bibliotheque.Entities.Magasine;
-import org.bibliotheque.storage.Interfaces.Bibliotheque;
-import org.bibliotheque.storage.LivreImp;
-import org.bibliotheque.storage.MagasineImp;
-import org.example.custom.ConsoleColors;
+import org.bibliotheque.metier.Entities.Livre;
+import org.bibliotheque.metier.Entities.Magasine;
+import org.bibliotheque.metier.storage.Interfaces.Bibliotheque;
+import org.bibliotheque.metier.storage.LivreImp;
+import org.bibliotheque.metier.storage.MagasineImp;
+import org.bibliotheque.presentation.custom.ConsoleColors;
 
 public class ConsoleUI {
 

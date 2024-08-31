@@ -1,6 +1,6 @@
-package org.bibliotheque.Entities;
+package org.bibliotheque.metier.Entities;
 
-import org.bibliotheque.Entities.Abstractions.Documents;
+import org.bibliotheque.metier.Entities.Abstractions.Documents;
 
 import java.util.Date;
 import java.util.List;

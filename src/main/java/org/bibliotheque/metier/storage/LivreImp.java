@@ -1,16 +1,12 @@
-package org.bibliotheque.storage;
+package org.bibliotheque.metier.storage;
 
-import org.bibliotheque.Entities.Abstractions.Documents;
-import org.bibliotheque.Entities.Livre;
-import org.bibliotheque.Entities.Magasine;
-import org.bibliotheque.storage.Interfaces.Bibliotheque;
+import org.bibliotheque.metier.Entities.Livre;
+import org.bibliotheque.metier.storage.Interfaces.Bibliotheque;
 
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collector;
 
 public class LivreImp implements Bibliotheque<Livre> {
     private static ArrayList<Livre> livres= new ArrayList<Livre>();;

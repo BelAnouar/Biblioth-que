@@ -1,6 +1,6 @@
 package org.bibliotheque;
 
-import org.bibliotheque.main.ConsoleUI;
+import org.bibliotheque.presentation.main.ConsoleUI;
 
 
 public class Main {

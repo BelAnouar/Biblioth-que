@@ -1,7 +1,6 @@
-package org.bibliotheque.storage.Interfaces;
+package org.bibliotheque.metier.storage.Interfaces;
 
-import org.bibliotheque.Entities.Abstractions.Documents;
-import org.bibliotheque.Entities.Livre;
+import org.bibliotheque.metier.Entities.Abstractions.Documents;
 
 import java.util.List;
 

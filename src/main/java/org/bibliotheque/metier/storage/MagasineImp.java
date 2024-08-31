@@ -1,9 +1,7 @@
-package org.bibliotheque.storage;
+package org.bibliotheque.metier.storage;
 
-import org.bibliotheque.Entities.Abstractions.Documents;
-import org.bibliotheque.Entities.Livre;
-import org.bibliotheque.Entities.Magasine;
-import org.bibliotheque.storage.Interfaces.Bibliotheque;
+import org.bibliotheque.metier.Entities.Magasine;
+import org.bibliotheque.metier.storage.Interfaces.Bibliotheque;
 
 import java.util.ArrayList;
 import java.util.List;
