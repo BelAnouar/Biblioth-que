@@ -1,14 +1,16 @@
 package org.bibliotheque.metier.Entities;
 
 import org.bibliotheque.metier.Entities.Abstractions.Documents;
+import org.bibliotheque.utils.DateUtil;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class Livre extends Documents {
     private long isbn;
-    public Livre(String id, String titre, String author, Date datePublication, int nombreDePages,long isbn) {
-        super(id, titre, author, datePublication, nombreDePages);
+    public Livre(String id, String titre, String author, LocalDate datePublication, int nombreDePages, long isbn) {
+        super(id, titre, author,  datePublication, nombreDePages);
         this.isbn = isbn;
     }
     public Livre(){

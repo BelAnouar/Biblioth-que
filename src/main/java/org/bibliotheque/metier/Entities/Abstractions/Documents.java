@@ -1,19 +1,23 @@
 package org.bibliotheque.metier.Entities.Abstractions;
 
+import org.bibliotheque.utils.DateUtil;
+
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+
 public abstract class Documents {
-    private String id;
-    private String title;
-    private String author;
-    private Date datePublication;
-    private int  nombreDePages ;
-    public  Documents(){
+    protected String id;
+    protected String title;
+    protected String author;
+    protected LocalDate datePublication;
+    protected int  nombreDePages ;
+    protected  Documents(){
 
     }
 
-    public Documents(String id , String titre ,String author ,Date datePublication ,int nombreDePages ) {
+    public Documents(String id , String titre ,String author ,LocalDate datePublication ,int nombreDePages ) {
         this.id = id;
         this.title = author;
         this.author = titre;
@@ -45,11 +49,11 @@ public abstract class Documents {
         this.author = auteur;
     }
 
-    public Date getDatePublication() {
+    public LocalDate getDatePublication() {
         return datePublication;
     }
 
-    public void setDatePublication(Date datePublication) {
+    public void setDatePublication(LocalDate datePublication) {
         this.datePublication = datePublication;
     }
 
