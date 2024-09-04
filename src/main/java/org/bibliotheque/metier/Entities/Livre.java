@@ -28,12 +28,25 @@ public class Livre extends Documents {
     @Override
     public boolean emprunt() {
 
-        return false;
+        if (isBorrowed()) {
+            System.out.println("Livre with ID " + id + " is already borrowed.");
+            return false;
+        }
+        setBorrowed(true);
+        System.out.println("livre with ID " + id + " has been successfully borrowed.");
+        return true;
     }
 
     @Override
     public boolean retourner() {
-        return false;
+
+        if (!isBorrowed()) {
+            System.out.println("livre with ID " + id + " was not borrowed.");
+            return false;
+        }
+        setBorrowed( false); ;
+        System.out.println("livre with ID " + id + " has been successfully returned.");
+        return true;
     }
 
     @Override

@@ -31,13 +31,7 @@ public class LivreImp implements Bibliotheque<Livre> {
             System.out.println("Livre with ID " + id + " not found.");
             return false;
         }
-        if (document.isBorrowed()) {
-            System.out.println("Livre with ID " + id + " is already borrowed.");
-            return false;
-        }
-        document.setBorrowed(true);
-        System.out.println("livre with ID " + id + " has been successfully borrowed.");
-        return true;
+        return   document.emprunt();
 
     }
 
@@ -48,13 +42,7 @@ public class LivreImp implements Bibliotheque<Livre> {
             System.out.println("Livre with ID " + id + " not found.");
             return false;
         }
-        if (!document.isBorrowed()) {
-            System.out.println("livre with ID " + id + " was not borrowed.");
-            return false;
-        }
-        document.setBorrowed( false); ;
-        System.out.println("livre with ID " + id + " has been successfully returned.");
-        return true;
+        return document.retourner();
     }
 
     @Override

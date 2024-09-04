@@ -30,13 +30,7 @@ public class MagasineImp implements Bibliotheque<Magasine> {
             System.out.println("Magasine with ID " + id + " not found.");
             return false;
         }
-        if (document.isBorrowed()) {
-            System.out.println("Magasine with ID " + id + " is already borrowed.");
-            return false;
-        }
-        document.setBorrowed(true);
-        System.out.println("Magasine with ID " + id + " has been successfully borrowed.");
-        return true;
+       return document.emprunt();
     }
 
     @Override
@@ -46,13 +40,7 @@ public class MagasineImp implements Bibliotheque<Magasine> {
             System.out.println("Magasine with ID " + id + " not found.");
             return false;
         }
-        if (!document.isBorrowed()) {
-            System.out.println("Magasine with ID " + id + " was not borrowed.");
-            return false;
-        }
-        document.setBorrowed(false);
-        System.out.println("Magasine with ID " + id + " has been successfully returned.");
-        return true;
+       return document.retourner();
     }
 
     @Override
