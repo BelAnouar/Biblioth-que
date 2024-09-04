@@ -9,31 +9,52 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LivreImp implements Bibliotheque<Livre> {
-    private static ArrayList<Livre> livres= new ArrayList<Livre>();;
-    private  HashMap<String, Livre> documentMap = new HashMap<>();
+    private static final ArrayList<Livre> livres= new ArrayList<Livre>();;
+    private final HashMap<String, Livre> documentMap = new HashMap<>();
     @Override
     public boolean Ajouter(Livre livre) {
       try{
           livres.add(livre);
-          System.out.println(livre.getId());
-
           documentMap.put(livre.getId(), livre);
-          System.out.println(documentMap);
           return true;
       }catch (Exception e){
           e.printStackTrace();
           return false;
+
       }
     }
 
     @Override
-    public boolean Emprunter() {
-        return false;
+    public boolean Emprunter(String id) {
+        Livre document = getDocuments(id);
+        if (document == null) {
+            System.out.println("Livre with ID " + id + " not found.");
+            return false;
+        }
+        if (document.isBorrowed()) {
+            System.out.println("Livre with ID " + id + " is already borrowed.");
+            return false;
+        }
+        document.setBorrowed(true);
+        System.out.println("livre with ID " + id + " has been successfully borrowed.");
+        return true;
+
     }
 
     @Override
-    public boolean Retourner() {
-        return false;
+    public boolean Retourner(String id) {
+        Livre document = getDocuments(id);
+        if (document == null) {
+            System.out.println("Livre with ID " + id + " not found.");
+            return false;
+        }
+        if (!document.isBorrowed()) {
+            System.out.println("livre with ID " + id + " was not borrowed.");
+            return false;
+        }
+        document.setBorrowed( false); ;
+        System.out.println("livre with ID " + id + " has been successfully returned.");
+        return true;
     }
 
     @Override

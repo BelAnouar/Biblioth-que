@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Livre extends Documents {
     private long isbn;
-    public Livre(String id, String titre, String author, LocalDate datePublication, int nombreDePages, long isbn) {
-        super(id, titre, author,  datePublication, nombreDePages);
+    public Livre(String id, String titre, String author, LocalDate datePublication, int nombreDePages, long isbn,boolean isBorroweb) {
+        super(id, titre, author,  datePublication, nombreDePages,isBorroweb);
         this.isbn = isbn;
     }
     public Livre(){
@@ -27,6 +27,7 @@ public class Livre extends Documents {
 
     @Override
     public boolean emprunt() {
+
         return false;
     }
 

@@ -13,16 +13,34 @@ public abstract class Documents {
     protected String author;
     protected LocalDate datePublication;
     protected int  nombreDePages ;
-    protected  Documents(){
+    protected boolean isBorrowed;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setBorrowed(boolean borrowed) {
+        isBorrowed = borrowed;
+    }
+
+    protected  Documents() {
 
     }
 
-    public Documents(String id , String titre ,String author ,LocalDate datePublication ,int nombreDePages ) {
+    public Documents(String id , String titre , String author , LocalDate datePublication , int nombreDePages,boolean isBorrowed ) {
         this.id = id;
         this.title = author;
         this.author = titre;
         this.datePublication = datePublication;
-        this.nombreDePages = nombreDePages ;
+        this.nombreDePages = nombreDePages ; this.isBorrowed = false;
     }
 
     public String getId() {

@@ -1,6 +1,6 @@
 package org.bibliotheque.presentation.main;
 
-import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -16,8 +16,8 @@ public class ConsoleUI {
 
     private static final Livre livre = new Livre();
     private static final Bibliotheque LivreImp = new LivreImp();
-    private static final  Bibliotheque MagasineImp=new MagasineImp();
-    private static final Magasine magasine=new Magasine();
+    private static final Bibliotheque MagasineImp = new MagasineImp();
+    private static final Magasine magasine = new Magasine();
 
     public ConsoleUI() {
         Scanner sc = new Scanner(System.in);
@@ -61,115 +61,155 @@ public class ConsoleUI {
         System.out.println("Press 1 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Ajouter un livre" + ConsoleColors.RESET);
         System.out.println("Press 2 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Ajouter une magazine" + ConsoleColors.RESET);
 
-        int ch = sc.nextInt();
-        System.out.print("Enter ISBN: ");
-        int isbn = sc.nextInt();
-        sc.nextLine();
+        try {
+            int ch = sc.nextInt();
+            sc.nextLine();
 
-        System.out.print("Enter Title: ");
-        String titre = sc.nextLine();
+            System.out.print("Enter ISBN: ");
+            int isbn = sc.nextInt();
+            sc.nextLine();
 
-        System.out.print("Enter Author: ");
-        String auteur = sc.nextLine();
-        System.out.print("Enter date (yyyy/mmm/dd): ");
-        String data = sc.nextLine();
+            System.out.print("Enter Title: ");
+            String titre = sc.nextLine();
 
-        System.out.print("Enter Number of Pages: ");
-        int nombreDePages = sc.nextInt();
-        sc.nextLine();
+            System.out.print("Enter Author: ");
+            String auteur = sc.nextLine();
 
-        switch (ch) {
-            case 1 -> {
+            System.out.print("Enter date (yyyy/mmm/dd): ");
+            String date = sc.nextLine();
 
-                UUID uuid = UUID.randomUUID();
-                livre.setId(uuid.toString());
-                livre.setIsbn(isbn);
-                livre.setTitre(titre);
-                livre.setAuteur(auteur);
-                livre.setDatePublication(DateUtil.parseDate(data));
-                livre.setNombreDePages(nombreDePages);
-                LivreImp.Ajouter(livre);
+            System.out.print("Enter Number of Pages: ");
+            int nombreDePages = sc.nextInt();
+            sc.nextLine();
+
+            UUID uuid = UUID.randomUUID();
+            String id = uuid.toString();
+
+            switch (ch) {
+                case 1 -> {
+                    Livre livre = new Livre();
+                    livre.setId(id);
+                    livre.setIsbn(isbn);
+                    livre.setTitre(titre);
+                    livre.setAuteur(auteur);
+                    livre.setDatePublication(DateUtil.parseDate(date));
+                    livre.setNombreDePages(nombreDePages);
+                    livre.setBorrowed(false);
+                    LivreImp.Ajouter(livre);
+                }
+                case 2 -> {
+                    Magasine magasine = new Magasine();
+                    magasine.setId(id);
+                    magasine.setNumero(isbn);
+                    magasine.setTitre(titre);
+                    magasine.setAuteur(auteur);
+                    magasine.setDatePublication(DateUtil.parseDate(date));
+                    magasine.setNombreDePages(nombreDePages);
+                    magasine.setBorrowed(false);
+                    MagasineImp.Ajouter(magasine);
+                }
+                default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
             }
-            case 2 -> {
-
-                UUID uuid = UUID.randomUUID();
-                magasine.setId(uuid.toString());
-                magasine.setNumero(isbn);
-                magasine.setTitre(titre);
-                magasine.setAuteur(auteur);
-                magasine.setDatePublication(DateUtil.parseDate(data));
-                magasine.setNombreDePages(nombreDePages);
-                LivreImp.Ajouter(magasine);
-            }
-            default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+        } catch (InputMismatchException e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid input. Please enter the correct data type." + ConsoleColors.RESET);
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "An error occurred: " + e.getMessage() + ConsoleColors.RESET);
         }
     }
 
     public void emprunterDocument(Scanner sc) {
         System.out.println("Press 1 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Emprunter un livre" + ConsoleColors.RESET);
         System.out.println("Press 2 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Emprunter une magazine" + ConsoleColors.RESET);
+        try {
+            int ch = sc.nextInt();
+            System.out.print("Enter Document ID: ");
+            String id = sc.next();
+            sc.nextLine();
 
-        int ch = sc.nextInt();
-        System.out.print("Enter Document ID: ");
-        String id = sc.next();
-        sc.nextLine();
-
-        switch (ch) {
-            case 1 -> {
-                LivreImp.Emprunter();
+            switch (ch) {
+                case 1 -> {
+                    LivreImp.Emprunter(id);
+                }
+                case 2 -> {
+                    MagasineImp.Emprunter(id);
+                }
+                default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
             }
-            case 2 -> {
-                MagasineImp.Emprunter();
-            }
-            default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+        } catch (InputMismatchException e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid input. Please enter the correct data type." + ConsoleColors.RESET);
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "An error occurred: " + e.getMessage() + ConsoleColors.RESET);
         }
     }
 
     public void retournerDocument(Scanner sc) {
         System.out.println("Press 1 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Retourner un livre" + ConsoleColors.RESET);
         System.out.println("Press 2 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Retourner une magazine" + ConsoleColors.RESET);
+        try {
+            int ch = sc.nextInt();
+            System.out.print("Enter Document ID: ");
+            String id = sc.next();
+            sc.nextLine();
 
-        int ch = sc.nextInt();
-        System.out.print("Enter Document ID: ");
-        String id = sc.next();
-        sc.nextLine();
+            switch (ch) {
+                case 1 -> {
+                    LivreImp.Retourner(id);
+                }
+                case 2 -> {
+                    MagasineImp.Retourner(id);
+                }
+                default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+            }
 
-        switch (ch) {
-            case 1 -> {
-                LivreImp.Retourner();
-            }
-            case 2 -> {
-                MagasineImp.Retourner();
-            }
-            default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+        } catch (InputMismatchException e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid input. Please enter the correct data type." + ConsoleColors.RESET);
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "An error occurred: " + e.getMessage() + ConsoleColors.RESET);
         }
     }
 
     public void afficherDocument(Scanner sc) {
         System.out.println("Press 1 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Afficher un livre" + ConsoleColors.RESET);
         System.out.println("Press 2 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Afficher une magazine" + ConsoleColors.RESET);
-
-        int ch = sc.nextInt();
-        switch (ch) {
-            case 1 -> LivreImp.Afficher();
-            case 2 -> MagasineImp.Afficher();
-            default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+        try {
+            int ch = sc.nextInt();
+            switch (ch) {
+                case 1 ->  System.out.println(LivreImp.Afficher());
+                case 2 -> MagasineImp.Afficher();
+                default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid input. Please enter the correct data type." + ConsoleColors.RESET);
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "An error occurred: " + e.getMessage() + ConsoleColors.RESET);
         }
     }
 
     public void rechercherDocument(Scanner sc) {
         System.out.println("Press 1 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Rechercher un livre" + ConsoleColors.RESET);
         System.out.println("Press 2 to" + ConsoleColors.PURPLE_BOLD_BRIGHT + " Rechercher une magazine" + ConsoleColors.RESET);
+        try {
 
-        int ch = sc.nextInt();
-        System.out.print("Enter Document ID: ");
-        String id = sc.next();
-        sc.nextLine();
 
-        switch (ch) {
-            case 1 -> System.out.println(LivreImp.getDocuments(id));
-            case 2 -> System.out.println(MagasineImp.getDocuments(id));
-            default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+            int ch = sc.nextInt();
+            System.out.print("Enter Document ID: ");
+            String id = sc.next();
+            sc.nextLine();
+
+            switch (ch) {
+                case 1 -> System.out.println(LivreImp.getDocuments(id));
+                case 2 -> System.out.println(MagasineImp.getDocuments(id));
+                default -> System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid choice" + ConsoleColors.RESET);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Invalid input. Please enter the correct data type." + ConsoleColors.RESET);
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "An error occurred: " + e.getMessage() + ConsoleColors.RESET);
         }
     }
 }
