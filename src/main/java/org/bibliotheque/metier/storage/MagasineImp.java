@@ -2,13 +2,14 @@ package org.bibliotheque.metier.storage;
 
 import org.bibliotheque.metier.Entities.Magasine;
 import org.bibliotheque.metier.storage.Interfaces.Bibliotheque;
+import org.bibliotheque.utils.Print;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class MagasineImp implements Bibliotheque<Magasine> {
-    private static final ArrayList<Magasine> magasines = new ArrayList<Magasine>();
+    private static final ArrayList<Magasine> magasines = new ArrayList<>();
     private final HashMap<String, Magasine> documentMap = new HashMap<>();
 
     @Override
@@ -27,7 +28,7 @@ public class MagasineImp implements Bibliotheque<Magasine> {
     public boolean Emprunter(String id) {
         Magasine document = getDocuments(id);
         if (document == null) {
-            System.out.println("Magasine with ID " + id + " not found.");
+           Print.log("Magasine with ID " + id + " not found.");
             return false;
         }
        return document.emprunt();
@@ -37,7 +38,7 @@ public class MagasineImp implements Bibliotheque<Magasine> {
     public boolean Retourner(String id) {
         Magasine document = getDocuments(id);
         if (document == null) {
-            System.out.println("Magasine with ID " + id + " not found.");
+            Print.log("Magasine with ID " + id + " not found.");
             return false;
         }
        return document.retourner();

@@ -1,10 +1,11 @@
 package org.bibliotheque.metier.Entities;
 
 import org.bibliotheque.metier.Entities.Abstractions.Documents;
-import org.bibliotheque.utils.DateUtil;
+import org.bibliotheque.utils.Print;
+
 
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.List;
 
 public class Magasine extends Documents {
@@ -30,22 +31,22 @@ public class Magasine extends Documents {
     @Override
     public boolean emprunt() {
         if (isBorrowed()) {
-            System.out.println("Magasine with ID " + id + " is already borrowed.");
+            Print.log("Magasine with ID " + id + " is already borrowed.");
             return false;
         }
         setBorrowed(true);
-        System.out.println("Magasine with ID " + id + " has been successfully borrowed.");
+        Print.log("Magasine with ID " + id + " has been successfully borrowed.");
         return true;
     }
 
     @Override
     public boolean retourner() {
         if (!isBorrowed()) {
-            System.out.println("Magasine with ID " + id + " was not borrowed.");
+            Print.log("Magasine with ID " + id + " was not borrowed.");
             return false;
         }
         setBorrowed(false);
-        System.out.println("Magasine with ID " + id + " has been successfully returned.");
+        Print.log("Magasine with ID " + id + " has been successfully returned.");
         return true;
     }
 

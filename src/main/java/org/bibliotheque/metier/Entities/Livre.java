@@ -1,19 +1,22 @@
 package org.bibliotheque.metier.Entities;
 
 import org.bibliotheque.metier.Entities.Abstractions.Documents;
-import org.bibliotheque.utils.DateUtil;
+import org.bibliotheque.utils.Print;
+
 
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.List;
 
 public class Livre extends Documents {
     private long isbn;
-    public Livre(String id, String titre, String author, LocalDate datePublication, int nombreDePages, long isbn,boolean isBorroweb) {
-        super(id, titre, author,  datePublication, nombreDePages,isBorroweb);
+
+    public Livre(String id, String titre, String author, LocalDate datePublication, int nombreDePages, long isbn, boolean isBorroweb) {
+        super(id, titre, author, datePublication, nombreDePages, isBorroweb);
         this.isbn = isbn;
     }
-    public Livre(){
+
+    public Livre() {
         super();
     }
 
@@ -29,11 +32,11 @@ public class Livre extends Documents {
     public boolean emprunt() {
 
         if (isBorrowed()) {
-            System.out.println("Livre with ID " + id + " is already borrowed.");
+            Print.log("Livre with ID " + id + " is already borrowed.");
             return false;
         }
         setBorrowed(true);
-        System.out.println("livre with ID " + id + " has been successfully borrowed.");
+        Print.log("livre with ID " + id + " has been successfully borrowed.");
         return true;
     }
 
@@ -41,11 +44,12 @@ public class Livre extends Documents {
     public boolean retourner() {
 
         if (!isBorrowed()) {
-            System.out.println("livre with ID " + id + " was not borrowed.");
+            Print.log("livre with ID " + id + " was not borrowed.");
             return false;
         }
-        setBorrowed( false); ;
-        System.out.println("livre with ID " + id + " has been successfully returned.");
+        setBorrowed(false);
+
+        Print.log("livre with ID " + id + " has been successfully returned.");
         return true;
     }
 
