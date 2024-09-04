@@ -16,7 +16,7 @@ public  class DataUtil {
        try {
          Class.forName("com.mysql.cj.jdbc.Driver");
          con= DriverManager.getConnection(dbUrl, dbUser, dbPass);
-         if (con!= null){
+         if (con != null){
              Print.log("Connected to the database successfully");
              return con;
          }else {
@@ -31,6 +31,6 @@ public  class DataUtil {
     }
     public static  Connection con = getConn();
 
-   
+
 
 }

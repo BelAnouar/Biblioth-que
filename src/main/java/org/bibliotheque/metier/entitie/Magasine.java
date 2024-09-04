@@ -6,7 +6,6 @@ import org.bibliotheque.utils.Print;
 
 import java.time.LocalDate;
 
-import java.util.List;
 
 public class Magasine extends Documents {
     public long getNumero() {

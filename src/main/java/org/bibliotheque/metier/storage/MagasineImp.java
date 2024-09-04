@@ -1,6 +1,6 @@
 package org.bibliotheque.metier.storage;
 
-import org.bibliotheque.metier.entitie.Livre;
+
 import org.bibliotheque.metier.entitie.Magasine;
 import org.bibliotheque.metier.storage.interfaces.Bibliotheque;
 import org.bibliotheque.utils.DataUtil;

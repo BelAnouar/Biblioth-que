@@ -8,6 +8,7 @@ import org.bibliotheque.metier.entitie.Livre;
 import org.bibliotheque.metier.entitie.Magasine;
 import org.bibliotheque.metier.storage.LivreImp;
 import org.bibliotheque.metier.storage.MagasineImp;
+import org.bibliotheque.presentation.custom.ConsoleColors;
 import org.bibliotheque.utils.DateUtil;
 import org.bibliotheque.utils.Print;
 
@@ -37,21 +38,21 @@ public class ConsoleUI {
     }
 
     private void displayMenu() {
-        Print.log("Welcome to LivreImp : ");
-        Print.log("Choose an option from below according to your designation:");
+        Print.log(ConsoleColors.BROWN_BACKGROUND + ConsoleColors.WHITE_BOLD_BRIGHT + "Welcome to LivreImp : " + ConsoleColors.RESET);
+        Print.log(ConsoleColors.BLUE_BOLD_BRIGHT + "Choose an option from below according to your designation: " + ConsoleColors.RESET);
 
         String format = "| %-4s | %-40s |\n";
-
-        Print.log("+------+------------------------------------------+");
+        String line="+------+------------------------------------------+";
+        Print.log(line);
         Print.log(String.format(format, "Key", "Option"));
-        Print.log("+------+------------------------------------------+");
-        Print.log(String.format(format, "1", "Ajouter un document (livre ou magazine)"));
-        Print.log(String.format(format, "2", "Emprunter un document"));
-        Print.log(String.format(format, "3", "Retourner un document"));
-        Print.log(String.format(format, "4", "Rechercher un document"));
-        Print.log(String.format(format, "5", "Afficher tous les documents"));
-        Print.log(String.format(format, "6", "EXIT"));
-        Print.log("+------+------------------------------------------+");
+        Print.log(line);
+        Print.log(String.format(format, "1",ConsoleColors.PURPLE_BOLD_BRIGHT + "Ajouter un document (livre ou magazine)"+ ConsoleColors.RESET));
+        Print.log(String.format(format, "2",ConsoleColors.PURPLE_BOLD_BRIGHT + "Emprunter un document"+ ConsoleColors.RESET));
+        Print.log(String.format(format, "3",ConsoleColors.PURPLE_BOLD_BRIGHT + "Retourner un document"+ ConsoleColors.RESET));
+        Print.log(String.format(format, "4",ConsoleColors.PURPLE_BOLD_BRIGHT + "Rechercher un document"+ ConsoleColors.RESET));
+        Print.log(String.format(format, "5",ConsoleColors.PURPLE_BOLD_BRIGHT + "Afficher tous les documents"+ ConsoleColors.RESET));
+        Print.log(String.format(format, "6",ConsoleColors.RED_BOLD_BRIGHT + "EXIT"+ ConsoleColors.RESET));
+        Print.log(line);
     }
 
     public void ajouterDocument(Scanner sc) {
@@ -72,7 +73,7 @@ public class ConsoleUI {
             Print.log("Enter Author: ");
             String auteur = sc.nextLine();
 
-            Print.log("Enter date (yyyy/MM/dd): ");
+            Print.log("Enter date (dd/MM/yyyy): ");
             String date = sc.nextLine();
 
             Print.log("Enter Number of Pages: ");

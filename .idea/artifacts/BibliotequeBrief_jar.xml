@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BibliotequeBrief:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BibliotequeBrief_jar</output-path>
+    <root id="archive" name="BibliotequeBrief.jar">
+      <element id="module-output" name="BibliotequeBrief" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../.m2/repository/com/google/protobuf/protobuf-java/3.25.1/protobuf-java-3.25.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../.m2/repository/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar" path-in-jar="/" />
+      <element id="artifact" artifact-name="BibliotequeBrief:jar2" />
+    </root>
+  </artifact>
+</component>
