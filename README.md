@@ -55,7 +55,8 @@ L'application est organisée en trois couches principales :
 ## Interface utilisateur
 
 L'application présente un menu interactif avec les options suivantes :
-
+## Lien Jira 
+Link : https://cinemy.atlassian.net/jira/software/projects/BIB/boards/5/backlog?assignee=unassigned%2C63f62561263233e653a9f4a1&epics=visible&atlOrigin=eyJpIjoiYmM1N2MwYzE3Mzg0NDFkNzgwMjFmYjE1YjQ5OTI2NmIiLCJwIjoiaiJ9
 ```plaintext
 1. Ajouter un document
 2. Emprunter un document
@@ -65,3 +66,4 @@ L'application présente un menu interactif avec les options suivantes :
 6. Quitter
 
 Veuillez entrer votre choix (1-6) :
+
