@@ -1,8 +1,6 @@
-package org.bibliotheque.metier.Entities.Abstractions;
+package org.bibliotheque.metier.entitie.abstractions;
 
 
-
-import java.sql.Date;
 import java.time.LocalDate;
 
 import java.util.List;
@@ -32,16 +30,14 @@ public abstract class Documents {
         isBorrowed = borrowed;
     }
 
-    protected  Documents() {
 
-    }
 
-    public Documents(String id , String titre , String author , LocalDate datePublication , int nombreDePages,boolean isBorrowed ) {
+    protected Documents(String id , String titre , String author , LocalDate datePublication , int nombreDePages,boolean isBorrowed ) {
         this.id = id;
         this.title = author;
         this.author = titre;
         this.datePublication = datePublication;
-        this.nombreDePages = nombreDePages ; this.isBorrowed = false;
+        this.nombreDePages = nombreDePages ; this.isBorrowed = isBorrowed;
     }
 
     public String getId() {

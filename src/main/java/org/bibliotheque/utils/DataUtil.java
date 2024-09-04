@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public  class DataUtil {
-    private static String dbUrl = "jdbc:mysql://localhost:3306/laravel";
+    private static String dbUrl = "jdbc:mysql://localhost:3306/library";
     private static String dbUser = "root";
     private static String dbPass = "password";
 
@@ -31,5 +31,6 @@ public  class DataUtil {
     }
     public static  Connection con = getConn();
 
+   
 
 }

@@ -1,6 +1,6 @@
-package org.bibliotheque.metier.Entities;
+package org.bibliotheque.metier.entitie;
 
-import org.bibliotheque.metier.Entities.Abstractions.Documents;
+import org.bibliotheque.metier.entitie.abstractions.Documents;
 import org.bibliotheque.utils.Print;
 
 
@@ -16,9 +16,6 @@ public class Livre extends Documents {
         this.isbn = isbn;
     }
 
-    public Livre() {
-        super();
-    }
 
     public long getIsbn() {
         return isbn;

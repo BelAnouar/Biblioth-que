@@ -4,8 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
 
-import org.bibliotheque.metier.Entities.Livre;
-import org.bibliotheque.metier.Entities.Magasine;
+import org.bibliotheque.metier.entitie.Livre;
+import org.bibliotheque.metier.entitie.Magasine;
 import org.bibliotheque.metier.storage.LivreImp;
 import org.bibliotheque.metier.storage.MagasineImp;
 import org.bibliotheque.utils.DateUtil;

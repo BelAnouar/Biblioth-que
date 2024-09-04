@@ -1,6 +1,6 @@
-package org.bibliotheque.metier.Entities;
+package org.bibliotheque.metier.entitie;
 
-import org.bibliotheque.metier.Entities.Abstractions.Documents;
+import org.bibliotheque.metier.entitie.abstractions.Documents;
 import org.bibliotheque.utils.Print;
 
 
@@ -23,10 +23,7 @@ public class Magasine extends Documents {
         super(id, titre, author, datePublication, nombreDePages,isBorroweb);
         this.numero = numero;
     }
-    public  Magasine(){
-        super();
 
-    }
 
     @Override
     public boolean emprunt() {
