@@ -6,8 +6,6 @@ import org.bibliotheque.utils.Print;
 
 import java.time.LocalDate;
 
-import java.util.List;
-
 public class Livre extends Documents {
     private long isbn;
 
@@ -51,8 +49,8 @@ public class Livre extends Documents {
     }
 
     @Override
-    public List<Livre> afficherDetails() {
-        return List.of();
+    public String afficherDetails() {
+      return toString();
     }
 
     @Override

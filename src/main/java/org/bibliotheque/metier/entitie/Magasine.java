@@ -48,7 +48,19 @@ public class Magasine extends Documents {
     }
 
     @Override
-    public List<? extends Documents> afficherDetails() {
-        return List.of();
+    public String afficherDetails() {
+        return toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Magazine {" +
+                "ID='" + getId() + '\'' +
+                ", Titre='" + getTitre() + '\'' +
+                ", Auteur='" + getAuteur() + '\'' +
+                ", Date de publication=" + getDatePublication() +
+                ", Nombre de pages=" + getNombreDePages() +
+                ", numero=" + numero +
+                '}';
     }
 }

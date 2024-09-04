@@ -3,8 +3,6 @@ package org.bibliotheque.metier.entitie.abstractions;
 
 import java.time.LocalDate;
 
-import java.util.List;
-
 
 public abstract class Documents {
     protected String id;
@@ -81,7 +79,7 @@ public abstract class Documents {
     }
     public abstract boolean emprunt();
     public abstract boolean retourner();
-    public abstract List<? extends  Documents> afficherDetails();
+    public abstract String afficherDetails();
 
 
 }
