@@ -50,11 +50,6 @@ public class Livre extends Documents {
 
     @Override
     public String afficherDetails() {
-      return toString();
-    }
-
-    @Override
-    public String toString() {
         return "Livre {" +
                 "ID='" + getId() + '\'' +
                 ", Titre='" + getTitre() + '\'' +
@@ -64,4 +59,6 @@ public class Livre extends Documents {
                 ", ISBN=" + isbn +
                 '}';
     }
+
+
 }

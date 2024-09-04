@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface  Bibliotheque<T extends Documents> {
 
-   boolean Ajouter(T Documents);
-   boolean Emprunter(String id);
-   boolean Retourner(String id);
+   boolean ajouter(T Documents);
+   boolean emprunter(String id);
+   boolean retourner(String id);
    T getDocuments(String  id);
-   List<T> Afficher();
+   void afficher();
 
 }

@@ -49,11 +49,6 @@ public class Magasine extends Documents {
 
     @Override
     public String afficherDetails() {
-        return toString();
-    }
-
-    @Override
-    public String toString() {
         return "Magazine {" +
                 "ID='" + getId() + '\'' +
                 ", Titre='" + getTitre() + '\'' +
@@ -63,4 +58,6 @@ public class Magasine extends Documents {
                 ", numero=" + numero +
                 '}';
     }
+
+
 }

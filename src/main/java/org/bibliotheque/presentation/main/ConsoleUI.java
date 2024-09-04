@@ -85,11 +85,11 @@ public class ConsoleUI {
             switch (ch) {
                 case 1 -> {
                     Livre livre = new Livre(id, titre, auteur, DateUtil.parseDate(date), nombreDePages, isbn, false);
-                    LivreImp.Ajouter(livre);
+                    LivreImp.ajouter(livre);
                 }
                 case 2 -> {
                     Magasine magasine = new Magasine(id, titre, auteur, DateUtil.parseDate(date), nombreDePages, isbn, false);
-                    MagasineImp.Ajouter(magasine);
+                    MagasineImp.ajouter(magasine);
                 }
                 default -> Print.log("Invalid choice");
             }
@@ -109,8 +109,8 @@ public class ConsoleUI {
             sc.nextLine();
 
             switch (ch) {
-                case 1 -> LivreImp.Emprunter(id);
-                case 2 -> MagasineImp.Emprunter(id);
+                case 1 -> LivreImp.emprunter(id);
+                case 2 -> MagasineImp.emprunter(id);
                 default -> Print.log("Invalid choice");
             }
         } catch (InputMismatchException e) {
@@ -129,8 +129,8 @@ public class ConsoleUI {
             sc.nextLine();
 
             switch (ch) {
-                case 1 -> LivreImp.Retourner(id);
-                case 2 -> MagasineImp.Retourner(id);
+                case 1 -> LivreImp.retourner(id);
+                case 2 -> MagasineImp.retourner(id);
                 default -> Print.log("Invalid choice");
             }
         } catch (InputMismatchException e) {
@@ -145,8 +145,8 @@ public class ConsoleUI {
         try {
             int ch = sc.nextInt();
             switch (ch) {
-                case 1 -> Print.log(LivreImp.Afficher());
-                case 2 -> Print.log(MagasineImp.Afficher());
+                case 1 -> LivreImp.afficher();
+                case 2 -> MagasineImp.afficher();
                 default -> Print.log("Invalid choice");
             }
         } catch (InputMismatchException e) {

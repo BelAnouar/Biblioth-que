@@ -16,7 +16,7 @@ public class LivreImp implements Bibliotheque<Livre> {
     private final HashMap<String, Livre> documentMap = new HashMap<>();
     private final Connection connection= DataUtil.con;
     @Override
-    public boolean Ajouter(Livre livre) {
+    public boolean ajouter(Livre livre) {
         int generatedId;
       try{
           livres.add(livre);
@@ -59,7 +59,7 @@ public class LivreImp implements Bibliotheque<Livre> {
     }
 
     @Override
-    public boolean Emprunter(String id) {
+    public boolean emprunter(String id) {
         Livre document = getDocuments(id);
         if (document == null) {
             Print.log("Livre with ID " + id + " not found.");
@@ -70,7 +70,7 @@ public class LivreImp implements Bibliotheque<Livre> {
     }
 
     @Override
-    public boolean Retourner(String id) {
+    public boolean retourner(String id) {
         Livre document = getDocuments(id);
         if (document == null) {
             Print.log("Livre with ID " + id + " not found.");
@@ -82,8 +82,12 @@ public class LivreImp implements Bibliotheque<Livre> {
     @Override
     public Livre getDocuments(String id) {
         try {
+            Livre livre = documentMap.get(id);
+            if (livre != null) {
+                Print.log(livre.afficherDetails());
+            }
+            return livre;
 
-           return documentMap.get(id);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -93,8 +97,10 @@ public class LivreImp implements Bibliotheque<Livre> {
     }
 
     @Override
-    public List<Livre>  Afficher() {
-        return livres;
+    public void   afficher() {
+        for (Livre livre : livres) {
+            Print.log(livre.afficherDetails());
+        }
     }
 
 

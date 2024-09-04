@@ -1,5 +1,6 @@
 package org.bibliotheque.metier.storage;
 
+import org.bibliotheque.metier.entitie.Livre;
 import org.bibliotheque.metier.entitie.Magasine;
 import org.bibliotheque.metier.storage.interfaces.Bibliotheque;
 import org.bibliotheque.utils.DataUtil;
@@ -8,14 +9,14 @@ import org.bibliotheque.utils.Print;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 public class MagasineImp implements Bibliotheque<Magasine> {
     private static final ArrayList<Magasine> magasines = new ArrayList<>();
     private final HashMap<String, Magasine> documentMap = new HashMap<>();
     private final Connection connection= DataUtil.con;
     @Override
-    public boolean Ajouter(Magasine magasine) {
+    public boolean ajouter(Magasine magasine) {
         int generatedId;
         try {
             magasines.add(magasine);
@@ -57,7 +58,7 @@ public class MagasineImp implements Bibliotheque<Magasine> {
     }
 
     @Override
-    public boolean Emprunter(String id) {
+    public boolean emprunter(String id) {
         Magasine document = getDocuments(id);
         if (document == null) {
            Print.log("Magasine with ID " + id + " not found.");
@@ -67,7 +68,7 @@ public class MagasineImp implements Bibliotheque<Magasine> {
     }
 
     @Override
-    public boolean Retourner(String id) {
+    public boolean retourner(String id) {
         Magasine document = getDocuments(id);
         if (document == null) {
             Print.log("Magasine with ID " + id + " not found.");
@@ -79,7 +80,12 @@ public class MagasineImp implements Bibliotheque<Magasine> {
     @Override
     public Magasine getDocuments(String id) {
         try {
-            return documentMap.get(id);
+            Magasine magasine = documentMap.get(id);
+            if (magasine != null) {
+                Print.log(magasine.afficherDetails());
+            }
+            return magasine;
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -87,7 +93,9 @@ public class MagasineImp implements Bibliotheque<Magasine> {
     }
 
     @Override
-    public List<Magasine> Afficher() {
-        return magasines;
+    public  void afficher() {
+        for (Magasine magasine : magasines) {
+            Print.log(magasine.afficherDetails());
+        }
     }
 }
